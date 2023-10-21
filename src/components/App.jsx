@@ -17,21 +17,17 @@ export const App = () => {
   const [contacts, setContacts] = useState(getInitialsContacts);
   const [filter, setFilter] = useState('');
 
-  const addContact = newContact => {
+  const addContact = newContact =>
     setContacts([...contacts, { ...newContact, id: nanoid() }]);
-  };
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const findContact = contact => {
-    setFilter(contact);
-  };
+  const findContact = contact => setFilter(contact);
 
-  const deleteContact = id => {
+  const deleteContact = id =>
     setContacts(contacts.filter(contact => id !== contact.id));
-  };
 
   const visibleContacts = contacts.filter(({ name }) =>
     name.toLowerCase().includes(filter.toLowerCase())
