@@ -18,7 +18,7 @@ export const App = () => {
   const [filter, setFilter] = useState('');
 
   const addContact = newContact => {
-    setContacts(prevState => [...prevState, { ...newContact, id: nanoid() }]);
+    setContacts([...contacts, { ...newContact, id: nanoid() }]);
   };
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export const App = () => {
   };
 
   const deleteContact = id => {
-    setContacts(prevState => prevState.filter(contact => id !== contact.id));
+    setContacts(contacts.filter(contact => id !== contact.id));
   };
 
   const visibleContacts = contacts.filter(({ name }) =>
